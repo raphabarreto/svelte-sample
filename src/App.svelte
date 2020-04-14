@@ -12,7 +12,7 @@
     people = people.filter(person => person.id != id);
   };
 
-  let num = 4;
+  let num = 20;
 </script>
 
 <style>
