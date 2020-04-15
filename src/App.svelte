@@ -7,12 +7,10 @@
     { name: "luigi", beltColour: "brown", age: 35, id: 3 }
   ];
 
-  const handleClick = id => {
-    // delete the person from people
+  const handleClick = (e, id) => {
     people = people.filter(person => person.id != id);
+    console.log(e);
   };
-
-  let num = 20;
 </script>
 
 <style>
@@ -30,15 +28,8 @@
   }
 </style>
 
-{#if num > 5}
-  <p>Greater than 20</p>
-{:else if num > 20}
-  <p>Greater than 5</p>
-{:else}
-  <p>Not greater than 5</p>
-{/if}
+<Modal message="Hey, I am a prop value" isPromo={true} />
 
-<Modal />
 <main>
   {#each people as person (person.id)}
     <div>
@@ -49,7 +40,7 @@
         </p>
       {/if}
       <p>{person.age} years old, {person.beltColour} belt.</p>
-      <button on:click={() => handleClick(person.id)}>delete</button>
+      <button on:click={e => handleClick(e, person.id)}>delete</button>
     </div>
   {:else}
     <p>There are no people to show...</p>
