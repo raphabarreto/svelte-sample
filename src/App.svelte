@@ -37,7 +37,7 @@
 <Modal message="Hey, I am a prop value" {showModal} on:click={toggleModal} />
 
 <main>
-  <button on:click={toggleModal}>Open Modal</button>
+  <button on:click|once={toggleModal}>Open Modal</button>
   {#each people as person (person.id)}
     <div>
       <h4>{person.name}</h4>
@@ -47,7 +47,7 @@
         </p>
       {/if}
       <p>{person.age} years old, {person.beltColour} belt.</p>
-      <button on:click={e => handleClick(e, person.id)}>delete</button>
+      <button on:click={() => handleClick(person.id)}>delete</button>
     </div>
   {:else}
     <p>There are no people to show...</p>
